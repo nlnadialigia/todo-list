@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from 'src/app/shared/models/todo.model';
 import { TodosService } from './../../../shared/services/todos.service';
+import { ListService } from './../services/list.service';
 
 @Component({
   selector: 'jv-list',
@@ -11,10 +12,13 @@ export class ListComponent implements OnInit {
   list!: Todo[];
   page = 0;
 
-  constructor(private todosServices: TodosService) {}
+  constructor(
+    private todosServices: TodosService,
+    private listService: ListService
+  ) {}
 
   ngOnInit(): void {
-    this.todosServices.getList(0).subscribe((list) => (this.list = list));
+    this.list = this.listService.list;
   }
 
   markAsDone(id: number) {

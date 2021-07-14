@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Todo } from 'src/app/shared/models/todo.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ListService {
+  list!: Todo[];
+
   constructor() {}
 }
