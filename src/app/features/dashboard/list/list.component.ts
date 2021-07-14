@@ -28,7 +28,13 @@ export class ListComponent implements OnInit {
       );
   }
 
-  onDelete(id: number) {}
+  onDelete(id: number) {
+    this.todosServices
+      .remove(id)
+      .subscribe(
+        () => (this.list = this.list.filter((item) => item.id !== id))
+      );
+  }
 
   loadMore() {
     this.page++;
