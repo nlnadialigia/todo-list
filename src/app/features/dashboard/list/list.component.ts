@@ -17,7 +17,16 @@ export class ListComponent implements OnInit {
     this.todosServices.getList(0).subscribe((list) => (this.list = list));
   }
 
-  markAsDone(id: number) {}
+  markAsDone(id: number) {
+    this.todosServices
+      .toggleDone(id)
+      .subscribe(
+        (todo) =>
+          (this.list = this.list.map((item) =>
+            item.id === todo.id ? todo : item
+          ))
+      );
+  }
 
   onDelete(id: number) {}
 
