@@ -19,4 +19,8 @@ export class LastTodosComponent implements OnInit {
   }
 
   markAsDone(id: number) {}
+
+  handleCreated(todo: Todo) {
+    this.list = [todo, ...this.list];
+  }
 }
