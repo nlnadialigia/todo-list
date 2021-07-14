@@ -9,6 +9,7 @@ import { TodosService } from './../../../shared/services/todos.service';
 })
 export class ListComponent implements OnInit {
   list!: Todo[];
+  page = 0;
 
   constructor(private todosServices: TodosService) {}
 
@@ -20,5 +21,10 @@ export class ListComponent implements OnInit {
 
   onDelete(id: number) {}
 
-  loadMore() {}
+  loadMore() {
+    this.page++;
+    this.todosServices
+      .getList(this.page)
+      .subscribe((list) => (this.list = [...this.list, ...list]));
+  }
 }
