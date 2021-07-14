@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Todo } from 'src/app/shared/models/todo.model';
+import { TodosService } from './../../../shared/services/todos.service';
 
 @Component({
   selector: 'jv-list',
@@ -6,23 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  list = [
-    {
-      id: 0,
-      createdAt: new Date(),
-      title: 'Modelo 1',
-      done: true
-    },
-    {
-      id: 1,
-      createdAt: new Date(),
-      title: 'Modelo 2',
-      done: false
-    }
-  ];
-  constructor() {}
+  list!: Todo[];
 
-  ngOnInit(): void {}
+  constructor(private todosServices: TodosService) {}
+
+  ngOnInit(): void {
+    this.todosServices.getList(0).subscribe((list) => (this.list = list));
+  }
 
   markAsDone(id: number) {}
 
