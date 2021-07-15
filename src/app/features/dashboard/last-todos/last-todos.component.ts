@@ -27,7 +27,16 @@ export class LastTodosComponent implements OnInit {
     }
   }
 
-  markAsDone(id: number) {}
+  markAsDone(id: number) {
+    this.todosService
+      .toggleDone(id)
+      .subscribe(
+        (todo) =>
+          (this.list = this.list.map((item) =>
+            item.id === todo.id ? todo : item
+          ))
+      );
+  }
 
   handleCreated(todo: Todo) {
     this.list = [todo, ...this.list];

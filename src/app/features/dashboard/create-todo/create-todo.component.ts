@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { TodosService } from './../../../shared/services/todos.service';
 
@@ -7,14 +7,12 @@ import { TodosService } from './../../../shared/services/todos.service';
   templateUrl: './create-todo.component.html',
   styleUrls: ['./create-todo.component.scss']
 })
-export class CreateTodoComponent implements OnInit {
+export class CreateTodoComponent {
   titleControl = new FormControl('');
 
   @Output() created = new EventEmitter();
 
   constructor(private todosServices: TodosService) {}
-
-  ngOnInit(): void {}
 
   save() {
     this.todosServices

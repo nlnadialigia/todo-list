@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserContextService } from 'src/app/shared/services/user-context.service';
@@ -8,7 +8,7 @@ import { LoginService } from './../../../shared/services/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   form = new FormGroup({
     name: new FormControl(''),
     email: new FormControl('')
@@ -18,8 +18,6 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private userContext: UserContextService
   ) {}
-
-  ngOnInit(): void {}
 
   login() {
     this.loginService
