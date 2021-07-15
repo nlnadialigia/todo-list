@@ -12,7 +12,7 @@
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/nlnadialigia/todo-list?color=52006a&style=plastic">
 
   <a href="./LICENSE.md">
-    <img alt="GitHub" src="https://img.shields.io/github/license/nlnadialigia/todo-list?color=52006a&style=plastic">
+    <img alt="License" src="https://img.shields.io/github/license/nlnadialigia/todo-list?color=52006a&style=plastic">
   </a>
 </p>
 <br>
@@ -49,9 +49,6 @@ $ cd todo-list
 
 # Instale as dependências
 $ yarn
-
-# Habilitar Git hooks do husky
-$ yarn prepare
 
 # Execute a aplicação
 $ yarn start
