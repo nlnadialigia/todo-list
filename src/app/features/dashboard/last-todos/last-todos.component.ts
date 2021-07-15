@@ -17,15 +17,8 @@ export class LastTodosComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.listService.list$.subscribe((list) => {
-      if (!list || !list.length) {
-        this.todosService
-          .getList(0)
-          .subscribe((list) => (this.listService.list = list));
-      } else {
-        this.list = list.slice(0, 10);
-      }
-    });
+    this.listService.getList(0);
+    this.listService.list$.subscribe((list) => (this.list = list.slice(0, 10)));
   }
 
   markAsDone(id: number) {

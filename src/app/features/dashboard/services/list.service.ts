@@ -5,10 +5,11 @@ import { TodosService } from './../../../shared/services/todos.service';
 
 @Injectable()
 export class ListService {
+  [x: string]: any;
   page = 0;
   private listSubject = new BehaviorSubject<Todo[]>([]);
 
-  constructor(private todosServices: TodosService) {}
+  constructor(private todosService: TodosService) {}
 
   get list$(): Observable<Todo[]> {
     return this.listSubject.asObservable();
@@ -19,8 +20,18 @@ export class ListService {
   }
 
   create(title: string) {
-    this.todosServices
+    this.todosService
       .create({ title })
       .subscribe((todo) => (this.list = [todo, ...this.listSubject.value]));
+  }
+
+  getList(page: number) {
+    this.todosService.getList(page).subscribe((list) => {
+      if (page === 0) {
+        this.list = list;
+      } else {
+        this.list = [...this.listSubject.value, ...list];
+      }
+    });
   }
 }
