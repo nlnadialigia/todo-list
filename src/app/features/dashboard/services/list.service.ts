@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Todo } from 'src/app/shared/models/todo.model';
 
 @Injectable()
 export class ListService {
-  private _list!: Todo[];
   page = 0;
+  private listSubject = new BehaviorSubject<Todo[]>([]);
 
-  constructor() {}
-
-  get list() {
-    return this._list;
+  get list$(): Observable<Todo[]> {
+    return this.listSubject.asObservable();
   }
 
-  set list(value) {
-    this._list = value;
+  set list(value: Todo[]) {
+    this.listSubject.next(value);
   }
 }
