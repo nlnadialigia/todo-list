@@ -10,7 +10,6 @@ import { ListService } from './../services/list.service';
 })
 export class ListComponent implements OnInit {
   list!: Todo[];
-  page = 0;
 
   constructor(
     private todosServices: TodosService,
@@ -41,9 +40,10 @@ export class ListComponent implements OnInit {
   }
 
   loadMore() {
-    this.page++;
-    this.todosServices
-      .getList(this.page)
-      .subscribe((list) => (this.list = [...this.list, ...list]));
+    this.listService.page++;
+    this.todosServices.getList(this.listService.page).subscribe((list) => {
+      this.list = [...this.list, ...list];
+      this.listService.list = this.list;
+    });
   }
 }
