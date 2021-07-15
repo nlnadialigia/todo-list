@@ -1,5 +1,5 @@
 <p align="center">
-  <img src=".github/logo.png" width=300 alt="Course Manager" />
+  <img src=".github/logo.png" width=300 alt="Todo List" />
 </p>
 
 <p align="center">
