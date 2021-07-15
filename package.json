@@ -9,10 +9,10 @@
     "test": "ng test",
     "type-check": "tsc",
     "prepare": "husky install",
-    "lint": "eslint . --ext ts --ext tsx --ext js --fix"
+    "lint": "eslint . --fix"
   },
   "lint-staged": {
-    "*.{ts, js, json}": [
+    "*.ts": [
       "yarn lint"
     ]
   },
