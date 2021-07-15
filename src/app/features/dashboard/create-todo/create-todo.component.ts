@@ -24,8 +24,6 @@ export class CreateTodoComponent {
   }
 
   save() {
-    this.todosServices
-      .create({ title: this.titleControl.value })
-      .subscribe((todo) => (this.listService.list = [todo, ...this.list]));
+    this.listService.create(this.titleControl.value);
   }
 }
